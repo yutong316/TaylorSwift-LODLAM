@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>从纳什维尔到世界 (From Nashville to the World)</title>
+    <style>
+        /* === 全局样式 (Light Theme / 极简高级白) === */
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* === 导航栏 === */
+        nav {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        nav a {
+            color: #333;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: #c0392b; }
+
+        /* === 头部 Banner === */
+        header {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            text-align: center;
+            background-image: url('../img/banner.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding-bottom: 100px;
+            position: relative;
+            background-color: #222;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+        
+        h1 { 
+            font-size: 5em; 
+            margin: 0; 
+            color: #fff;
+            letter-spacing: 5px; 
+            text-transform: uppercase; 
+            font-weight: 800;
+            text-shadow: 0 5px 30px rgba(0,0,0,0.8);
+            position: relative;
+            z-index: 2;
+        }
+        .subtitle { 
+            font-style: italic; 
+            color: #fff; 
+            font-size: 1.8em; 
+            margin-top: 10px;
+            font-weight: 400;
+            text-shadow: 0 2px 15px rgba(0,0,0,0.9);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* === 通用样式 === */
+        section {
+            max-width: 1100px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+        h2 {
+            color: #111;
+            border-bottom: 2px solid #e74c3c;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        h3 { 
+            color: #444; 
+            margin-top: 45px; 
+            font-size: 1.4em; 
+            font-weight: 600;
+            border-left: 4px solid #e74c3c; 
+            padding-left: 15px; 
+        }
+        
+        /* 文本对齐方式 */
+        p { 
+            color: #555; 
+            text-align: left; 
+            font-size: 1.1em; 
+            margin-bottom: 20px;
+            letter-spacing: 0.3px;
+            word-spacing: normal; 
+            line-height: 1.8;
+            text-indent: 0;
+            white-space: normal;
+            padding: 0;
+            margin-top: 0;
+        }
+
+        /* === 修改：轮播图容器 === */
+        .carousel-container {
+            display: flex;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            /* 修改这里：由 height:500px 改为 min-height，允许高度根据内容自动撑开 */
+            min-height: 500px;
+            height: auto; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+        .carousel-image {
+            flex: 1.5;
+            background-color: #f9f9f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            min-height: 400px; /* 确保图片区域有最小高度 */
+        }
+        .carousel-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .carousel-text {
+            flex: 1; 
+            padding: 30px; /* 稍微减小内边距以容纳更多文字 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-left: 1px solid #eee;
+            background: #fff;
+        }
+        
+        /* 新增：专门针对轮播图文字的样式调整 */
+        #slide-desc {
+            font-size: 0.95em; /*稍微调小一点字体，防止内容过多*/
+            line-height: 1.6;
+        }
+
+        .carousel-nav {
+            margin-top: 20px;
+        }
+        .nav-btn {
+            background: #fff;
+            border: 1px solid #ccc;
+            color: #333;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-right: 10px;
+            border-radius: 30px;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        .nav-btn:hover { 
+            background: #333; 
+            color: #fff; 
+            border-color: #333;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .gallery-item {
+            background: #fff;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        .gallery-item:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15); 
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        .gallery-info {
+            padding: 20px;
+        }
+        .gallery-item h4 { 
+            margin: 0 0 5px 0; 
+            color: #222; 
+            font-size: 1em; 
+            font-weight: 700;
+        }
+        
+        /* 画廊文字特殊处理 */
+        .gallery-item .gallery-info p, 
+        .gallery-item p.desc {
+            font-size: 0.9em;
+            color: #555;
+            text-align: left; 
+            line-height: 1.6;
+            letter-spacing: 0.5px;
+            margin-top: 10px;
+            margin-bottom: 0;
+            padding: 0 5px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 400;
+        }
+
+        .gallery-item h4 {
+            margin: 0 0 8px 0;
+            color: #222;
+            font-size: 1.1em;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .img-container { text-align: center; margin: 40px 0; }
+        .img-main {
+            max-width: 100%;
+            border-radius: 5px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .caption { 
+            font-size: 0.9em; 
+            color: #777; 
+            margin-top: 15px; 
+            font-style: italic; 
+            border-left: 3px solid #ddd;
+            padding-left: 10px;
+            display: inline-block;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #c0392b;
+            color: white;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            margin-top: 20px;
+            font-family: sans-serif;
+            font-weight: 600;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(192, 57, 43, 0.3);
+            transition: transform 0.2s;
+        }
+        .btn:hover { 
+            transform: translateY(-2px);
+            background-color: #a93226; 
+        }
+
+        .team-member {
+            text-align: center;
+            margin-top: 50px;
+            padding: 40px;
+            background: #f9f9f9;
+            border-radius: 10px;
+        }
+        .avatar {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .team-name { font-size: 1.5em; font-weight: bold; color: #222; margin: 10px 0 5px 0; }
+        .role { color: #e74c3c; font-weight: 600; font-size: 0.9em; text-transform: uppercase; letter-spacing: 2px; }
+
+        footer {
+            text-align: center;
+            padding: 60px;
+            background-color: #111;
+            color: #666;
+            font-size: 0.85em;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#intro">Introduction</a>
+        <a href="#design">Design</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#models">Models</a>
+        <a href="#data">Data</a>
+        <a href="#team">Team</a>
+    </nav>
+
+    <header>
+        <h1>The Eras of a Legend</h1>
+        <p class="subtitle">A LODLAM Project on Taylor Swift's Career Evolution</p>
+    </header>
+
+    <section id="intro">
+        <h2>1. Introduction</h2>
+        <p>This project explores the evolution of <strong>Taylor Swift</strong> from a local country singer in Nashville to a global pop icon. By curating and modelling 10 heterogeneous items—ranging from archival manuscripts to museum objects and digital media—this project demonstrates how <strong>Linked Open Data (LOD)</strong> technologies can connect cultural heritage across libraries, archives, and museums (LODLAM).</p>
+        <p>The core narrative is divided into four phases: <em>The Roots</em>, <em>The Craft</em>, <em>The Reclamation</em>, and <em>The Legacy</em>.</p>
+    </section>
+
+    <section id="design">
+        <h2>2. Project Design Strategy</h2>
+        <p>The following methodology was applied to structure the unstructured cultural data:</p>
+        
+        <div class="carousel-container">
+            <div class="carousel-image">
+                <img id="slide-img" src="../img/guidence.png" alt="Slide Image">
+            </div>
+            <div class="carousel-text">
+                <h3 id="slide-title" style="margin-top:0;">1. Situation</h3>
+                <p id="slide-desc">I realized this is not merely a web development task, but a comprehensive LODLAM (Linked Open Data for Libraries, Archives, and Museums) data engineering project. The core requirements boil down to selecting a subject, gathering ten items related to it, and establishing a digital project around that subject through a full lifecycle approach. This involves standardizing and modeling textual materials, followed by coding them into machine-readable linked data and a human-readable web interface.</p>
+                <div class="carousel-nav">
+                    <button class="nav-btn" onclick="prevSlide()">&#10094; Prev</button>
+                    <button class="nav-btn" onclick="nextSlide()">Next &#10095;</button>
+                </div>
+                <p style="margin-top:20px; font-size:0.8em; color:#ccc; letter-spacing:1px;">STEP <span id="slide-num">1</span> OF 5</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2>3. Selected Items Gallery</h2>
+        <p>A curated collection of 10 heterogeneous items representing the LODLAM domains (Library, Archive, Museum).</p>
+        
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="../img/wildest dream handwriiten .jpg" alt="Manuscript">
+                <div class="gallery-info">
+                    <h4>Wildest Dreams (Lyrics)</h4>
+                    <p>The handwritten manuscript of Taylor Swift's song “Wildest Dreams” reveals her meticulous craftsmanship as a musical prodigy, showcasing her dedication to refining lyrics and delivering the finest music to her audience. Every note is infused with genuine emotion, embodying her original compositions. This unwavering commitment to authenticity is the very foundation of her status as a global superstar.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="../img/bluebird coffe.png" alt="Place"> 
+                <div class="gallery-info">
+                    <h4>The Bluebird Cafe</h4>
+                    <p>This was the first bar where Taylor performed regularly. It was here that her passion for music earned her recognition. And it was precisely at this venue that her destiny began to change. She was discovered by the owner of Big Machine Records at the time and signed to the label.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="../img/sworoski guitar.png" alt="Object"> 
+                <div class="gallery-info">
+                    <h4>Swarovski Guitar</h4>
+                    <p>The Swarovski crystal guitar was one of the standout elements of her concert, demonstrating the synergy between the jewelry accessories industry and the musical instrument performance sector. This collaboration significantly boosted Swarovski's brand visibility while also underscoring Taylor's immense influence. The guitar has since been acquired for the collection of a German museum.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="../img/fearless taylor vision.png" alt="Album"> 
+                <div class="gallery-info">
+                    <h4>Fearless (TV)</h4>
+                    <p>The Fearless Taylor version represents Taylor's rebellion against the unfair contract terms imposed by her former company. Regarding copyright protection issues, Taylor decided to fight back and released a re-recorded version. This embodies Taylor's self-assertion.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="../img/Borchetta, Scott.png" alt="Person"> 
+                <div class="gallery-info">
+                    <h4>Scott Borchetta</h4>
+                    <p>Scott Borchetta and Taylor Swift have a long and complex history, beginning when Borchetta signed Swift to his label, Big Machine Records, in 2005, launching her career.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="../img/cardigan.png" alt="Object"> 
+                <div class="gallery-info">
+                    <h4>Folklore Cardigan</h4>
+                    <p>A cream cable-knit cardigan with black star embroidery, released as the signature merchandise for the Folklore era (2020). This object symbolizes Swift's pivot from stadium pop to indie-folk introspection during the pandemic. It represents a shift in her visual branding—from the polished pop star to a cozy, authentic storyteller—marking a mature redefinition of her artistry.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="../img/Miss Americana.png" alt="Film"> 
+                <div class="gallery-info">
+                    <h4>Miss Americana</h4>
+                    <p>A documentary film directed by Lana Wilson (2020) that chronicles a transformational period in Swift's life. It captures her political awakening and her struggle to deconstruct her 'good girl' persona. This work documents the human side of the superstar, revealing the emotional labor behind her global fame and her decision to finally use her voice for social advocacy.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="../img/The Eras Tour.jpg" alt="Event"> 
+                <div class="gallery-info">
+                    <h4>The Eras Tour</h4>
+                    <p>The sixth concert tour by Taylor Swift (2023–2024), described as a journey through all of her musical 'eras'. It became the highest-grossing tour in history, a cultural phenomenon that transcended music. This event serves as a retrospective of her entire career, visually and sonically uniting the country girl from Nashville with the global pop icon she has become.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="../img/66th Grammy Album of the Year.png" alt="Award"> 
+                <div class="gallery-info">
+                    <h4>Grammy Award</h4>
+                    <p>The Grammy Award for Album of the Year presented to Swift for Midnights in 2024. With this win, she became the first artist in history to win this prestigious category four times. This object (concept) cements her legacy not just as a star, but as one of the most critically acclaimed and enduring songwriters in the history of recorded music.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="../img/Time Person of the Year 2023 Issue.png" alt="Cover"> 
+                <div class="gallery-info">
+                    <h4>Time Person of Year</h4>
+                    <p>The cover of Time magazine (December 2023) featuring Taylor Swift as the 'Person of the Year'. She was the first entertainer to be honored for her artistic achievement alone. This item marks the culmination of her journey, recognizing her influence as a global force who has reshaped the music industry and touched the lives of millions worldwide.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="models">
+        <h2>4. Knowledge Organization Models</h2>
+        
+        <h3>4.1 Theoretical Model (The Narrative)</h3>
+        <p>This model visualizes the narrative structure of the project, organizing items into chronological and thematic phases.</p>
+        <div class="img-container">
+            <img class="img-main" src="../img/theoretical_model.png" alt="Theoretical Model Diagram">
+            <div class="caption">Figure 1: Theoretical Model showing the 4 phases of career evolution.</div>
+        </div>
+
+        <h3>4.2 Conceptual Model (The Ontology)</h3>
+        <p>This technical blueprint maps the relationships between entities using standard ontologies (CIDOC-CRM, FRBRoo, FOAF). It translates the narrative into machine-readable logic.</p>
+        <div class="img-container">
+            <img class="img-main" src="../img/conceptual_model.png" alt="Conceptual Model Diagram">
+            <div class="caption">Figure 2: The RDF Graph structure connecting all 10 items.</div>
+        </div>
+    </section>
+
+    <section id="data">
+        <h2>5. Knowledge Representation</h2>
+        
+        <h3>5.1 Digital Edition (TEI)</h3>
+        <p>The handwritten lyrics were digitally transcribed using TEI XML. Semantic entities (Place, Object) were marked up and linked to Wikidata. An XSLT transformation was used to generate a user-friendly reading view.</p>
+        <div style="text-align: center;">
+            <a href="wildest_dreams.html" class="btn" target="_blank">View Digital Edition</a>
+        </div>
+
+        <h3>5.2 Knowledge Graph (RDF)</h3>
+        <p>The metadata from the CSV file was transformed into RDF Triples (Turtle format) using Python, creating the backbone of the project's Knowledge Graph.</p>
+        <p style="text-align:center; margin-top:20px;">
+            <strong>Download Macro Data:</strong> <a href="../output/taylor_swift_graph.ttl" style="color: #e74c3c; font-weight:bold;">taylor_swift_graph.ttl</a>
+            <br><br>
+            <strong>Download Micro Data:</strong> <a href="../output/tei_extract.ttl" style="color: #e74c3c; font-weight:bold;">tei_extract.ttl</a>
+        </p>
+    </section>
+
+    <section id="team">
+        <h2>6. Project Team</h2>
+        <div class="team-member">
+            <img src="../img/avatar.png" alt="Yuming Lian" class="avatar">
+            <div class="team-name">Yuming Lian</div>
+            <p class="role">Sole Developer & Curator</p>
+            <p>Yuming.lian@studio.unibo.it</p>
+            <p>University of Bologna</p>
+            <p style="font-size: 0.9em; color: #777; max-width: 500px; margin: 10px auto;">Responsible for domain research, data collection, ontology modeling (Draw.io), TEI encoding, and Python script development.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Taylor Swift LODLAM Project. Created for the "Information Science and Cultural Heritage" Course.</p>
+    </footer>
+
+    <script>
+        const slides = [
+            {
+                img: "../img/guidence.png", 
+                title: "1. Situation",
+                desc: "I realized this is not merely a web development task, but a comprehensive LODLAM (Linked Open Data for Libraries, Archives, and Museums) data engineering project. The core requirements boil down to selecting a subject, gathering ten items related to it, and establishing a digital project around that subject through a full lifecycle approach. This involves standardizing and modeling textual materials, followed by coding them into machine-readable linked data and a human-readable web interface."
+            },
+            {
+                img: "../img/TASK.png",
+                title: "2. TASK",
+                // 这里加了 <br> 标签，让列表换行显示
+                desc: "1. CSV (10 items) <br> 2. TEI (select one from 10 items) <br> 3. TEI --> XML <br> 4. TEI --> XML -->XLS---> HTML <br> 5. Two maps <br> 6. CSV --> RDF <br> 7. TEL (Micro) --> RDF <br> 8. HTML"
+            },
+            {
+                img: "../img/action.png",
+                title: "3. ACTION",
+                // 这里加了 <br><br> 标签，增加段落间距
+                desc: "1. Generate a CSV file containing metadata for 10 items. <br><br> 2. Select one manuscript from the 10 items as a TEI file, convert it to an XML file, then convert it to an HTML file. <br><br> 3. Create theoretical diagrams and knowledge graphs. Using the knowledge graph and the 10-item CSV file as guidance, convert them into an RDF file via Python. <br><br> 4. At the micro level, convert one manuscript(TEI) into an RDF file using Python. <br><br> 5. Finally, generate an HTML report page as the final output."
+            },
+            {
+                img: "../img/sworoski guitar.png", 
+                title: "4. RESULT",
+                // 这里加了 <br><br> 标签
+                desc: "I successfully delivered a fully functional LODLAM prototype project. <br><br> 1. Achieved data interoperability: Using RDF and URIs, I connected my local data (e.g., guitars, manuscripts) to the global data cloud (LOD Cloud). <br><br> 2. Achieved multidimensional knowledge representation: The project not only displays bibliographic information (Metadata) about objects but also reveals semantic information within manuscripts (Semantic Entities) and logical relationships between objects (Ontological Relationships). <br><br> 3. Demonstrated the integration of technology and humanities: Validated how computational methods (Python, XML, RDF) can be used to preserve and disseminate cultural heritage (Taylor Swift's artistic career), perfectly aligning with course requirements."
+            },
+        ];
+
+        let currentSlide = 0;
+
+        function updateSlide() {
+            const s = slides[currentSlide];
+            document.getElementById('slide-img').src = s.img; 
+            document.getElementById('slide-title').innerText = s.title;
+            // 重要：将 innerText 改为 innerHTML，这样 <br> 标签才能生效
+            document.getElementById('slide-desc').innerHTML = s.desc;
+            document.getElementById('slide-num').innerText = currentSlide + 1;
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateSlide();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateSlide();
+        }
+    </script>
+
+</body>
+</html>

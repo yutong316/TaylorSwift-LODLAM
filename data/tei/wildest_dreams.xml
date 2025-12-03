@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Wildest Dreams (Handwritten Draft)</title>
+                <author ref="http://viaf.org/viaf/88580701">Taylor Swift</author>
+            </titleStmt>
+            <publicationStmt>
+                <p>Digital transcription for LODLAM Course Final Project</p>
+            </publicationStmt>
+            <sourceDesc>
+                <bibl>
+                    <title>Original Handwritten Lyrics of Wildest Dreams</title>
+                    <date>2014</date>
+                    <medium>Ink on lined paper</medium>
+                </bibl>
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    
+    <text>
+        <body>
+            <head>Wildest Dreams</head>
+            
+            <lg n="1" type="verse">
+                <l>He said "Let's <del>disappear</del> <add place="above">get out of</add></l>
+                <l><del>from here</del> this <placeName ref="https://www.wikidata.org/wiki/Q3957">town</placeName>"</l>
+                <l>Drive out of the <placeName ref="https://www.wikidata.org/wiki/Q515">city</placeName></l>
+                <l><del>'Til the lights burn out</del></l> 
+                <l><del>I thought</del> It's okay</l>
+                <l>if we never get found</l>
+                <l>Live in here forever</l>
+                <l>Better keep it to yourself</l>
+            </lg>
+
+            <lg n="2" type="pre-chorus">
+                <l>A-and you're so tall</l>
+                <l>And handsome as hell</l>
+                <l>I don't know what you do</l>
+                <l>But you're doing it well</l>
+                <l>And when we've had</l>
+                <l>our very last kiss</l>
+                <l>My last request is... <del>Close</del></l>
+            </lg>
+
+            <lg n="3" type="chorus">
+                <l>Say you'll remember me</l>
+                <l>Standing in a <objectName ref="https://www.wikidata.org/wiki/Q200539">nice dress</objectName></l>
+                <l>Staring at the <term type="time" ref="https://www.wikidata.org/wiki/Q166564">sunset</term>, babe</l>
+                <l>Red <objectName ref="https://www.wikidata.org/wiki/Q15173">lips</objectName> and rosy <objectName ref="https://www.wikidata.org/wiki/Q193858">cheeks</objectName></l>
+                <l>Say <del>that this won't be</del></l>
+                <l><del>the last time baby</del></l>
+                <l>You'll see me again</l>
+            </lg>
+        </body>
+    </text>
+</TEI>
