@@ -46,7 +46,7 @@
             justify-content: flex-end;
             align-items: center;
             text-align: center;
-            /* 【修改处 1】CSS背景图路径 */
+            /* 【修复】CSS背景图路径 */
             background-image: url('img/banner.jpg');
             background-size: cover;
             background-position: center;
@@ -129,7 +129,7 @@
             margin-top: 0;
         }
 
-        /* === 修改：轮播图容器 === */
+        /* === 轮播图样式 === */
         .carousel-container {
             display: flex;
             background: #fff;
@@ -190,6 +190,7 @@
             border-color: #333;
         }
 
+        /* === Gallery 样式 === */
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -218,15 +219,15 @@
             padding: 20px;
         }
         .gallery-item h4 { 
-            margin: 0 0 5px 0; 
-            color: #222; 
-            font-size: 1em; 
+            margin: 0 0 8px 0;
+            color: #222;
+            font-size: 1.1em;
             font-weight: 700;
+            letter-spacing: 0.5px;
         }
         
         /* 画廊文字特殊处理 */
-        .gallery-item .gallery-info p, 
-        .gallery-item p.desc {
+        .gallery-item .gallery-info p {
             font-size: 0.9em;
             color: #555;
             text-align: left; 
@@ -239,14 +240,7 @@
             font-weight: 400;
         }
 
-        .gallery-item h4 {
-            margin: 0 0 8px 0;
-            color: #222;
-            font-size: 1.1em;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
+        /* === 图片容器样式 === */
         .img-container { text-align: center; margin: 40px 0; }
         .img-main {
             max-width: 100%;
@@ -263,6 +257,7 @@
             display: inline-block;
         }
 
+        /* === 按钮样式 === */
         .btn {
             display: inline-block;
             background-color: #c0392b;
@@ -282,7 +277,7 @@
             background-color: #a93226; 
         }
 
-        /* === 新增：团队区域网格布局 === */
+        /* === 团队区域网格布局 === */
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 自适应列宽 */
@@ -499,22 +494,15 @@
             <div class="team-member">
                 <img src="img/yuming_lian.jpg" alt="Yuming Lian" class="avatar" onerror="this.src='img/avatar.png'">
                 <div class="team-name">Yuming Lian</div>
-                <p class="role">Project Lead & Data Architect</p>
-                <p class="team-desc">Responsible for overall project conception, ontology modeling (CIDOC-CRM), Python script development for data transformation (RDF generation), and final web integration.</p>
-            </div>
-
-            <div class="team-member">
-                <img src="img/xinyi_guo.jpg" alt="Xinyi Guo" class="avatar" onerror="this.src='img/avatar.png'">
-                <div class="team-name">Xinyi Guo</div>
-                <p class="role">Metadata Specialist & TEI Encoder</p>
-                <p class="team-desc">Led the metadata curation for the 10 items, focusing on TEI XML encoding for manuscripts and ensuring data standardization across the project.</p>
+                <p class="role">Lead Data Architect & Technical Developer</p>
+                <p class="team-desc">Responsible for the end-to-end technical infrastructure: from ontology modeling (CIDOC-CRM) and metadata standardization (TEI encoding) to developing Python scripts for RDF knowledge graph generation and final web integration.</p>
             </div>
 
             <div class="team-member">
                 <img src="img/yutong_li.jpg" alt="Yutong Li" class="avatar" onerror="this.src='img/avatar.png'">
                 <div class="team-name">Yutong Li</div>
-                <p class="role">Content Curator & UX Designer</p>
-                <p class="team-desc">Managed the selection and narrative context of cultural items, designed the conceptual framework, and assisted with the user experience of the final digital presentation.</p>
+                <p class="role">Lead Content Curator & UX Designer</p>
+                <p class="team-desc">In charge of the project's narrative and conceptual framework. Curated the heterogeneous cultural items, defined the thematic phases, and designed the user experience to effectively communicate the LODLAM goals.</p>
             </div>
         </div>
     </section>
@@ -524,7 +512,7 @@
     </footer>
 
     <script>
-        // 【修改处 10】JavaScript 数据中的图片路径
+        // 【修复】JavaScript 数据中的图片路径
         const slides = [
             {
                 img: "img/guidence.png", 
