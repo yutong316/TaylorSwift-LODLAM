@@ -46,7 +46,6 @@
             justify-content: flex-end;
             align-items: center;
             text-align: center;
-            /* 【修复】CSS背景图路径 */
             background-image: url('img/banner.jpg');
             background-size: cover;
             background-position: center;
@@ -114,7 +113,6 @@
             padding-left: 15px; 
         }
         
-        /* 文本对齐方式 */
         p { 
             color: #555; 
             text-align: left; 
@@ -129,7 +127,6 @@
             margin-top: 0;
         }
 
-        /* === 轮播图样式 === */
         .carousel-container {
             display: flex;
             background: #fff;
@@ -190,7 +187,6 @@
             border-color: #333;
         }
 
-        /* === Gallery 样式 === */
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -226,7 +222,6 @@
             letter-spacing: 0.5px;
         }
         
-        /* 画廊文字特殊处理 */
         .gallery-item .gallery-info p {
             font-size: 0.9em;
             color: #555;
@@ -240,7 +235,6 @@
             font-weight: 400;
         }
 
-        /* === 图片容器样式 === */
         .img-container { text-align: center; margin: 40px 0; }
         .img-main {
             max-width: 100%;
@@ -257,7 +251,6 @@
             display: inline-block;
         }
 
-        /* === 按钮样式 === */
         .btn {
             display: inline-block;
             background-color: #c0392b;
@@ -277,11 +270,10 @@
             background-color: #a93226; 
         }
 
-        /* === 团队区域网格布局 === */
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 自适应列宽 */
-            gap: 40px; /* 成员卡片之间的间距 */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
             margin-top: 50px;
         }
 
@@ -290,10 +282,9 @@
             padding: 40px;
             background: #f9f9f9;
             border-radius: 10px;
-            transition: transform 0.3s, box-shadow 0.3s; /* 添加悬停效果 */
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        /* 添加悬停效果 */
         .team-member:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
@@ -311,13 +302,12 @@
         .team-name { font-size: 1.5em; font-weight: bold; color: #222; margin: 10px 0 5px 0; }
         .role { color: #e74c3c; font-weight: 600; font-size: 0.9em; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; }
         
-        /* 团队成员描述样式 */
         .team-desc {
             font-size: 0.95em;
             color: #666;
             line-height: 1.6;
-            max-width: 90%; /* 限制文字宽度 */
-            margin: 0 auto; /* 居中对齐 */
+            max-width: 90%;
+            margin: 0 auto;
         }
 
         footer {
@@ -492,17 +482,17 @@
         
         <div class="team-grid">
             <div class="team-member">
-                <img src="img/yuming_lian.jpg" alt="Yuming Lian" class="avatar" onerror="this.src='img/avatar.png'">
+                <img src="img/avatar.png" alt="Yuming Lian" class="avatar">
                 <div class="team-name">Yuming Lian</div>
-                <p class="role">Lead Data Architect & Technical Developer</p>
-                <p class="team-desc">Responsible for the end-to-end technical infrastructure: from ontology modeling (CIDOC-CRM) and metadata standardization (TEI encoding) to developing Python scripts for RDF knowledge graph generation and final web integration.</p>
+                <p class="role">Project Lead & Data Architect</p>
+                <p class="team-desc">Designed the overall conceptual framework and technical infrastructure. Responsible for relationship modeling (CIDOC-CRM), Python-based RDF generation, and overall web integration.</p>
             </div>
 
             <div class="team-member">
-                <img src="img/yutong_li.jpg" alt="Yutong Li" class="avatar" onerror="this.src='img/avatar.png'">
+                <img src="img/avatar2.png" alt="Yutong Li" class="avatar">
                 <div class="team-name">Yutong Li</div>
-                <p class="role">Lead Content Curator & UX Designer</p>
-                <p class="team-desc">In charge of the project's narrative and conceptual framework. Curated the heterogeneous cultural items, defined the thematic phases, and designed the user experience to effectively communicate the LODLAM goals.</p>
+                <p class="role">Content Curator & UX Designer</p>
+                <p class="team-desc">In charge of cultural material interpretation and metadata dimensions design. Implemented the TEI encoding workflow and the interpretive framework connecting artistry with thematic resilience.</p>
             </div>
         </div>
     </section>
@@ -512,7 +502,6 @@
     </footer>
 
     <script>
-        // 【修复】JavaScript 数据中的图片路径
         const slides = [
             {
                 img: "img/guidence.png", 
