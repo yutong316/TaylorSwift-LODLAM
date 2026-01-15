@@ -46,7 +46,6 @@
             justify-content: flex-end;
             align-items: center;
             text-align: center;
-            /* 【修改处 1】CSS背景图路径 */
             background-image: url('img/banner.jpg');
             background-size: cover;
             background-position: center;
@@ -114,7 +113,6 @@
             padding-left: 15px; 
         }
         
-        /* 文本对齐方式 */
         p { 
             color: #555; 
             text-align: left; 
@@ -129,7 +127,6 @@
             margin-top: 0;
         }
 
-        /* === 修改：轮播图容器 === */
         .carousel-container {
             display: flex;
             background: #fff;
@@ -218,15 +215,14 @@
             padding: 20px;
         }
         .gallery-item h4 { 
-            margin: 0 0 5px 0; 
-            color: #222; 
-            font-size: 1em; 
+            margin: 0 0 8px 0;
+            color: #222;
+            font-size: 1.1em;
             font-weight: 700;
+            letter-spacing: 0.5px;
         }
         
-        /* 画廊文字特殊处理 */
-        .gallery-item .gallery-info p, 
-        .gallery-item p.desc {
+        .gallery-item .gallery-info p {
             font-size: 0.9em;
             color: #555;
             text-align: left; 
@@ -237,14 +233,6 @@
             padding: 0 5px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-weight: 400;
-        }
-
-        .gallery-item h4 {
-            margin: 0 0 8px 0;
-            color: #222;
-            font-size: 1.1em;
-            font-weight: 700;
-            letter-spacing: 0.5px;
         }
 
         .img-container { text-align: center; margin: 40px 0; }
@@ -282,11 +270,10 @@
             background-color: #a93226; 
         }
 
-        /* === 新增：团队区域网格布局 === */
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 自适应列宽 */
-            gap: 40px; /* 成员卡片之间的间距 */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
             margin-top: 50px;
         }
 
@@ -295,10 +282,9 @@
             padding: 40px;
             background: #f9f9f9;
             border-radius: 10px;
-            transition: transform 0.3s, box-shadow 0.3s; /* 添加悬停效果 */
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        /* 添加悬停效果 */
         .team-member:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
@@ -316,13 +302,12 @@
         .team-name { font-size: 1.5em; font-weight: bold; color: #222; margin: 10px 0 5px 0; }
         .role { color: #e74c3c; font-weight: 600; font-size: 0.9em; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; }
         
-        /* 团队成员描述样式 */
         .team-desc {
             font-size: 0.95em;
             color: #666;
             line-height: 1.6;
-            max-width: 90%; /* 限制文字宽度 */
-            margin: 0 auto; /* 居中对齐 */
+            max-width: 90%;
+            margin: 0 auto;
         }
 
         footer {
@@ -497,24 +482,17 @@
         
         <div class="team-grid">
             <div class="team-member">
-                <img src="img/yuming_lian.jpg" alt="Yuming Lian" class="avatar" onerror="this.src='img/avatar.png'">
+                <img src="img/avatar.png" alt="Yuming Lian" class="avatar">
                 <div class="team-name">Yuming Lian</div>
                 <p class="role">Project Lead & Data Architect</p>
-                <p class="team-desc">Responsible for overall project conception, ontology modeling (CIDOC-CRM), Python script development for data transformation (RDF generation), and final web integration.</p>
+                <p class="team-desc">Designed the overall conceptual framework and technical infrastructure. Responsible for relationship modeling (CIDOC-CRM), Python-based RDF generation, and overall web integration.</p>
             </div>
 
             <div class="team-member">
-                <img src="img/xinyi_guo.jpg" alt="Xinyi Guo" class="avatar" onerror="this.src='img/avatar.png'">
-                <div class="team-name">Xinyi Guo</div>
-                <p class="role">Metadata Specialist & TEI Encoder</p>
-                <p class="team-desc">Led the metadata curation for the 10 items, focusing on TEI XML encoding for manuscripts and ensuring data standardization across the project.</p>
-            </div>
-
-            <div class="team-member">
-                <img src="img/yutong_li.jpg" alt="Yutong Li" class="avatar" onerror="this.src='img/avatar.png'">
+                <img src="img/avatar2.png" alt="Yutong Li" class="avatar">
                 <div class="team-name">Yutong Li</div>
                 <p class="role">Content Curator & UX Designer</p>
-                <p class="team-desc">Managed the selection and narrative context of cultural items, designed the conceptual framework, and assisted with the user experience of the final digital presentation.</p>
+                <p class="team-desc">In charge of cultural material interpretation and metadata dimensions design. Implemented the TEI encoding workflow and the interpretive framework connecting artistry with thematic resilience.</p>
             </div>
         </div>
     </section>
@@ -524,7 +502,6 @@
     </footer>
 
     <script>
-        // 【修改处 10】JavaScript 数据中的图片路径
         const slides = [
             {
                 img: "img/guidence.png", 

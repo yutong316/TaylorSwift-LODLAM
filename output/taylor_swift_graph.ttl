@@ -2,76 +2,91 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix frbroo: <http://iflastandards.info/ns/fr/frbr/frbroo/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 <https://example.org/taylor-project/item_001> a crm:E22_Man_Made_Object ;
-    frbroo:R17i_was_created_by <http://viaf.org/viaf/88582739> ;
-    dcterms:creator <http://viaf.org/viaf/88582739> ;
+    frbroo:R17i_was_created_by <https://example.org/taylor-project/agent/taylor_swift> ;
+    dcterms:creator <https://example.org/taylor-project/agent/taylor_swift> ;
     dcterms:date "2014-10-19" ;
     dcterms:description "Original handwritten lyrics of the song 'Wildest Dreams', released as promotional material." ;
-    dcterms:title "Wildest Dreams (Handwritten Lyrics)" .
+    dcterms:title "Wildest Dreams (Handwritten Lyrics)" ;
+    crm:P51_has_former_or_current_owner <https://example.org/taylor-project/agent/taylor_swift> .
+    owl:sameAs <https://www.wikidata.org/wiki/Q20882673>
+    
+
+<https://example.org/taylor-project/item_002> a crm:E53_Place ;
+    dcterms:creator <https://example.org/taylor-project/agent/amy_kurland> ;
+    dcterms:date "1982" ;
+    dcterms:description "The venue in Nashville where Taylor Swift was discovered by Scott Borchetta." ;
+    dcterms:title "The Bluebird Cafe" ;
+    crm:P89_falls_within "Nashville" .
+    owl:sameAs <https://www.wikidata.org/wiki/Q105092163>
 
 <https://example.org/taylor-project/item_003> a crm:E22_Man_Made_Object ;
-    dcterms:creator <http://viaf.org/viaf/135013788> ;
+    dcterms:creator <https://example.org/taylor-project/agent/gibson_brands> ;
     dcterms:date "2009" ;
     dcterms:description "Custom guitar encrusted with Swarovski crystals used during the Fearless Tour." ;
-    dcterms:title "Swarovski Crystal Gibson Les Paul" ;
-    crm:P51_has_former_or_current_owner <http://viaf.org/viaf/88582739> .
+    dcterms:title "Swarovski Crystal Gibson Les Paul" .
+    owl:sameAs <http://viaf.org/viaf/131751788>.
 
 <https://example.org/taylor-project/item_004> a frbroo:F1_Work ;
-    dcterms:creator <http://viaf.org/viaf/88582739> ;
+    dcterms:creator <https://example.org/taylor-project/agent/taylor_swift> ;
     dcterms:date "2021-04-09" ;
     dcterms:description "The first re-recorded album released by Swift to reclaim her master recordings." ;
     dcterms:title "Fearless (Taylor's Version)" .
+    owl: sameAs <http://viaf.org/viaf/147148704067636931130>
+
+<https://example.org/taylor-project/item_005> a foaf:Person ;
+    dcterms:creator "-" ;
+    dcterms:date "1962-07-03" ;
+    dcterms:description "American record executive who founded Big Machine Records and signed Taylor Swift." ;
+    dcterms:title "Scott Borchetta" ;
+    owl:sameAs <https://www.wikidata.org/wiki/Q7436016> ;
+    foaf:knows <https://example.org/taylor-project/agent/taylor_swift> .
 
 <https://example.org/taylor-project/item_006> a crm:E22_Man_Made_Object ;
-    dcterms:creator <http://viaf.org/viaf/88582739> ;
+    dcterms:creator <https://example.org/taylor-project/agent/taylor_swift_merch> ;
     dcterms:date "2020-07-24" ;
     dcterms:description "Cream cable-knit cardigan with black star embroidery, a symbol of the Folklore era." ;
     dcterms:title "The Folklore Cardigan" ;
-    crm:P51_has_former_or_current_owner <http://viaf.org/viaf/88582739> .
+    crm:P51_has_former_or_current_owner <https://example.org/taylor-project/agent/taylor_swift> .
+    owl:sameAs <https://www.wikidata.org/wiki/Q97631372>
 
 <https://example.org/taylor-project/item_007> a frbroo:F1_Work ;
     dcterms:creator <http://viaf.org/viaf/309564223> ;
     dcterms:date "2020-01-23" ;
     dcterms:description "Documentary following Swift during a transformational period of her life and career." ;
     dcterms:title "Miss Americana" ;
-    crm:P129_is_about <http://viaf.org/viaf/88582739> .
+    crm:P129_is_about <https://example.org/taylor-project/agent/taylor_swift> .
 
 <https://example.org/taylor-project/item_008> a crm:E5_Event ;
-    dcterms:creator <http://viaf.org/viaf/88582739> ;
+    dcterms:creator <https://example.org/taylor-project/agent/taylor_swift> ;
     dcterms:date "2023-03-17" ;
     dcterms:description "The sixth concert tour by Taylor Swift, described as a journey through her musical eras." ;
     dcterms:title "The Eras Tour" ;
-    crm:P11_had_participant <http://viaf.org/viaf/88582739> .
+    crm:P11_had_participant <https://example.org/taylor-project/agent/taylor_swift> .
+    owl:sameAs <https://www.wikidata.org/wiki/Q114977368>
 
 <https://example.org/taylor-project/item_009> a crm:E13_Attribute_Assignment ;
-    dcterms:creator <http://viaf.org/viaf/144184305> ;
+    dcterms:creator <https://example.org/taylor-project/agent/recording_academy> ;
     dcterms:date "2024-02-04" ;
     dcterms:description "Award won by Taylor Swift for 'Midnights', making her the first artist to win the category four times." ;
     dcterms:title "66th Grammy Album of the Year" ;
-    crm:P140_assigned_attribute_to <http://viaf.org/viaf/88582739> .
+    crm:P140_assigned_attribute_to <https://example.org/taylor-project/agent/taylor_swift> .
+    owl:sameAs <https://www.wikidata.org/wiki/Q904528>
 
 <https://example.org/taylor-project/item_010> a frbroo:F1_Work ;
     dcterms:creator <http://viaf.org/viaf/2689873> ;
     dcterms:date "2023-12-06" ;
     dcterms:description "Cover of Time Magazine featuring Taylor Swift and her cat Benjamin Button." ;
     dcterms:title "Time Person of the Year 2023 Issue" ;
-    foaf:depicts <http://viaf.org/viaf/88582739> .
+    foaf:depicts <https://example.org/taylor-project/agent/taylor_swift> .
+    owl: sameAs <https://www.wikidata.org/wiki/Q207826>
 
-<https://example.org/taylor-project/item_002> a crm:E53_Place ;
-    dcterms:creator <http://viaf.org/viaf/305203362> ;
-    dcterms:date "1982" ;
-    dcterms:description "The venue in Nashville where Taylor Swift was discovered by Scott Borchetta." ;
-    dcterms:title "The Bluebird Cafe" .
-
-<https://example.org/taylor-project/item_005> a foaf:Person ;
-    dcterms:creator "-" ;
-    dcterms:date "1962-07-03" ;
-    dcterms:description "American record executive who founded Big Machine Records and signed Taylor Swift." ;
-    dcterms:title "Scott Borchetta" .
-
-<http://viaf.org/viaf/88582739> a foaf:Person ;
-    crm:P14_performed_at <https://example.org/taylor-project/item_002> ;
-    foaf:knows <https://example.org/taylor-project/item_005> ;
-    foaf:name "Taylor Swift" .
+<https://example.org/taylor-project/agent/taylor_swift> a crm:E39_Actor ;
+    rdfs:label "Swift, Taylor" ;
+    owl:sameAs <http://dbpedia.org/resource/Taylor_Swift>,
+        <http://viaf.org/viaf/88582739>,
+        <http://www.wikidata.org/entity/Q26876> .
 
