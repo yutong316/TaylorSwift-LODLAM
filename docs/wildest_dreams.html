@@ -1,48 +1,135 @@
 <html xmlns:tei="http://www.tei-c.org/ns/1.0">
   <head>
-    <title>Wildest Dreams TEI</title>
+    <title>Wildest Dreams TEI - Digital Edition</title>
     <style>
-                    body { font-family: sans-serif; padding: 20px; }
-                    .card { border: 1px solid #ccc; padding: 20px; border-radius: 8px; }
-                    del { color: red; text-decoration: line-through; }
-                    .add { color: green; vertical-align: super; font-size: small; }
-                    .entity { border-bottom: 1px dotted blue; background: #eef; }
-                </style>
+        /* 全局基础样式 */
+        body { 
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+            padding: 40px; 
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* 卡片容器 */
+        .card { 
+            max-width: 1100px; 
+            margin: 0 auto;
+            background: white; 
+            padding: 40px; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            border-bottom: 2px solid #e74c3c;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            font-weight: 300;
+            text-transform: uppercase;
+        }
+
+        /* 分栏布局结构 */
+        .tei-layout {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        /* 左侧：文字转录区域 */
+        .transcription {
+            flex: 1.2;
+            min-width: 300px;
+        }
+
+        /* 右侧：图片展示区域 */
+        .manuscript-aside {
+            flex: 0.8;
+            position: sticky;
+            top: 20px;
+        }
+
+        .manuscript-aside img {
+            width: 100%;
+            height: auto; /* 大小自适应 */
+            border-radius: 4px;
+            border: 1px solid #eee;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .img-caption {
+            font-size: 0.85em;
+            color: #777;
+            margin-top: 10px;
+            font-style: italic;
+            text-align: center;
+        }
+
+        /* TEI 转换专用样式 */
+        del { color: #e74c3c; text-decoration: line-through; opacity: 0.7; }
+        .add { color: #27ae60; vertical-align: super; font-size: 0.8em; font-weight: bold; }
+        .entity { 
+            border-bottom: 1px dotted #3498db; 
+            background: #f0f7ff; 
+            padding: 0 2px;
+            cursor: help;
+        }
+
+        .verse-block { margin-bottom: 25px; line-height: 1.8; font-size: 1.1em; }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .tei-layout { flex-direction: column; }
+            .manuscript-aside { position: static; width: 100%; order: -1; }
+        }
+    </style>
   </head>
   <body>
-    <div class="card"><h1>Wildest Dreams (Handwritten Draft)</h1>
-            Wildest Dreams
-            
-            <div style="margin-bottom: 20px;">
-                <div style="line-height: 1.5;">He said "Let's <del>disappear</del> <span class="add">get out of</span></div>
-                <div style="line-height: 1.5;"><del>from here</del> this <span class="entity">town</span>"</div>
-                <div style="line-height: 1.5;">Drive out of the <span class="entity">city</span></div>
-                <div style="line-height: 1.5;"><del>'Til the lights burn out</del></div> 
-                <div style="line-height: 1.5;"><del>I thought</del> It's okay</div>
-                <div style="line-height: 1.5;">if we never get found</div>
-                <div style="line-height: 1.5;">Live in here forever</div>
-                <div style="line-height: 1.5;">Better keep it to yourself</div>
+    <div class="card">
+        <h1>Wildest Dreams (Handwritten Draft)</h1>
+        
+        <div class="tei-layout">
+            <div class="transcription">
+                <div style="font-weight: bold; margin-bottom: 20px; color: #666;">Transcription from Original Manuscript</div>
+
+                <div class="verse-block">
+                    <div>He said "Let's <del>disappear</del> <span class="add">get out of</span></div>
+                    <div><del>from here</del> this <span class="entity">town</span>"</div>
+                    <div>Drive out of the <span class="entity">city</span></div>
+                    <div><del>'Til the lights burn out</del></div> 
+                    <div><del>I thought</del> It's okay</div>
+                    <div>if we never get found</div>
+                    <div>Live in here forever</div>
+                    <div>Better keep it to yourself</div>
+                </div>
+
+                <div class="verse-block">
+                    <div>A-and you're so tall</div>
+                    <div>And handsome as hell</div>
+                    <div>I don't know what you do</div>
+                    <div>But you're doing it well</div>
+                    <div>And when we've had</div>
+                    <div>our very last kiss</div>
+                    <div>My last request is... <del>Close</del></div>
+                </div>
+
+                <div class="verse-block">
+                    <div>Say you'll remember me</div>
+                    <div>Standing in a <span class="entity">nice dress</span></div>
+                    <div>Staring at the sunset, babe</div>
+                    <div>Red <span class="entity">lips</span> and rosy <span class="entity">cheeks</span></div>
+                    <div>Say <del>that this won't be</del></div>
+                    <div><del>the last time baby</del></div>
+                    <div>You'll see me again</div>
+                </div>
             </div>
 
-            <div style="margin-bottom: 20px;">
-                <div style="line-height: 1.5;">A-and you're so tall</div>
-                <div style="line-height: 1.5;">And handsome as hell</div>
-                <div style="line-height: 1.5;">I don't know what you do</div>
-                <div style="line-height: 1.5;">But you're doing it well</div>
-                <div style="line-height: 1.5;">And when we've had</div>
-                <div style="line-height: 1.5;">our very last kiss</div>
-                <div style="line-height: 1.5;">My last request is... <del>Close</del></div>
-            </div>
-
-            <div style="margin-bottom: 20px;">
-                <div style="line-height: 1.5;">Say you'll remember me</div>
-                <div style="line-height: 1.5;">Standing in a <span class="entity">nice dress</span></div>
-                <div style="line-height: 1.5;">Staring at the sunset, babe</div>
-                <div style="line-height: 1.5;">Red <span class="entity">lips</span> and rosy <span class="entity">cheeks</span></div>
-                <div style="line-height: 1.5;">Say <del>that this won't be</del></div>
-                <div style="line-height: 1.5;"><del>the last time baby</del></div>
-                <div style="line-height: 1.5;">You'll see me again</div>
+            <div class="manuscript-aside">
+                <img src="img/manuscript.png" alt="Wildest Dreams Original Manuscript">
+                <div class="img-caption">
+                    Figure: Original Handwritten Draft (crm:E22 Man-Made Object)
+                </div>
             </div>
         </div>
+    </div>
   </body>
 </html>
